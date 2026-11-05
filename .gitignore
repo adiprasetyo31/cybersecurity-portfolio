@@ -4,3 +4,6 @@ dist/
 .env
 .DS_Store
 .vercel/
+
+# Panduan pribadi (tidak untuk publik)
+PANDUAN.md
