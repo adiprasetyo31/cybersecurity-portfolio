@@ -1,0 +1,88 @@
+---
+import Globe from './Globe.astro';
+---
+
+<section class="container hero">
+  <div class="hero__copy">
+    <div class="hero__status mono">
+      <span class="hero__dot"></span>
+      <span>Open to cybersecurity analyst roles · Yogyakarta, ID</span>
+    </div>
+    <h1 class="hero__title">Security analyst in training, learning by doing.</h1>
+    <p class="hero__sub">
+      I'm an Informatics graduate from Universitas Islam Indonesia. I work through hands-on labs in
+      SIEM, phishing analysis and threat intel, document what I find, and turn it into reports a
+      team can actually use.
+    </p>
+    <div class="hero__actions">
+      <a href="#work" class="btn btn-accent">
+        View case studies
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+      <!-- Taruh CV kamu di public/resume/Adi_Prasetyo_CV.pdf -->
+      <a href="/resume/Adi_Prasetyo_CV.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Download resume</a>
+    </div>
+  </div>
+  <Globe />
+</section>
+
+<style>
+  .hero {
+    padding-top: 120px;
+    padding-bottom: var(--s-9);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-8);
+    align-items: center;
+  }
+  .hero__copy {
+    flex: 999 1 560px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-6);
+  }
+  .hero__status {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    font-size: 13px;
+    color: var(--subtle);
+    letter-spacing: 0.02em;
+  }
+  .hero__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(194, 242, 94, 0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(194, 242, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(194, 242, 94, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__dot { animation: none; }
+  }
+  .hero__title {
+    font-size: clamp(44px, 6vw, 80px);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+    max-width: 13ch;
+  }
+  .hero__sub {
+    max-width: 52ch;
+    font-size: 18px;
+    color: var(--muted);
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+  }
+</style>

@@ -1,0 +1,175 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+  index: number;
+}
+const { entry, index } = Astro.props;
+const d = entry.data;
+const num = String(index).padStart(2, '0');
+const isExternal = (href: string) => href.startsWith('http') || href.endsWith('.pdf');
+---
+
+<article class="case" data-reveal>
+  <div class="case__top">
+    <div class="case__tags">
+      <span class="case__num mono">{num}</span>
+      {d.tags.map((t) => <span class="tag">{t}</span>)}
+    </div>
+    <span class="case__meta mono">{d.meta}</span>
+  </div>
+
+  <h3 class="case__title">{d.title}</h3>
+
+  {
+    d.metrics && (
+      <div class="case__metrics hairline-grid">
+        {d.metrics.map((m) => (
+          <div class="metric">
+            <span class="label">{m.label}</span>
+            <span class="metric__value">
+              {m.before && <s class="metric__before">{m.before}</s>}
+              <span class:list={[{ 'metric__accent': !!m.before }]}>{m.value}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  <div class="case__pao">
+    {[['Problem', d.problem], ['Action', d.action], ['Outcome', d.outcome]].map(([label, text]) => (
+      <div class="pao">
+        <span class="pao__label mono">{label}</span>
+        <p>{text}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="case__bottom">
+    <div class="case__tools">
+      {d.tools.map((t) => <span class="chip">{t}</span>)}
+    </div>
+    <div class="case__links">
+      {
+        d.links.map((l) =>
+          isExternal(l.href) ? (
+            <a href={l.href} target="_blank" rel="noopener">{l.label}</a>
+          ) : (
+            <a href={l.href}>{l.label}</a>
+          ),
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .case {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    padding: clamp(24px, 4vw, 48px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-6);
+  }
+  .case__top,
+  .case__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-4);
+  }
+  .case__tags,
+  .case__tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-2);
+  }
+  .case__tags {
+    gap: var(--s-3);
+  }
+  .case__num {
+    font-size: 13px;
+    color: var(--faint);
+  }
+  .case__meta {
+    font-size: 12px;
+    color: var(--subtle);
+  }
+  .case__title {
+    font-size: clamp(24px, 2.6vw, 32px);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    max-width: 28ch;
+  }
+  .case__metrics {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    border-radius: 14px;
+  }
+  .metric {
+    padding: 20px var(--s-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+  .metric__value {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .metric__before {
+    font-size: 20px;
+    color: var(--faint);
+    margin-right: var(--s-2);
+  }
+  .metric__accent {
+    color: var(--accent);
+  }
+  .case__pao {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-6);
+    border-top: 1px solid var(--line);
+    padding-top: var(--s-6);
+  }
+  .pao {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
+  .pao__label {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .pao p {
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .case__links {
+    display: flex;
+    gap: var(--s-5);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .case__links a {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease;
+  }
+  .case__links a:hover {
+    border-color: var(--accent);
+  }
+  @media (max-width: 760px) {
+    .case__pao {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

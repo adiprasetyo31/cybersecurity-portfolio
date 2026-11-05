@@ -1,0 +1,123 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHead from './SectionHead.astro';
+
+const toolkit = await getCollection('toolkit');
+const roles = await getCollection('roles');
+---
+
+<section id="toolkit" class="bordered">
+  <div class="container section">
+    <SectionHead eyebrow="04 / Toolkit" title="Tools and frameworks I've used hands-on" />
+
+    <div class="tools hairline-grid" data-reveal>
+      {
+        toolkit.map(({ data: g }) => (
+          <div class="tools__group">
+            <span class="label">{g.group}</span>
+            <div class="tools__items">
+              {g.items.map((i) => (
+                <span class="chip tools__chip">{i}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="roles">
+      <span class="label">Skills to roles</span>
+      <div class="roles__grid">
+        {
+          roles.map(({ data: r }) => (
+            <div class="role" data-reveal>
+              <div class="role__head">
+                <h3>{r.name}</h3>
+                {r.badge && (
+                  <span class:list={['role__badge mono', { 'role__badge--primary': r.primary }]}>
+                    {r.badge}
+                  </span>
+                )}
+              </div>
+              <p class="role__skills">{r.skills}</p>
+              <p class="role__proof mono">{r.proof}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tools {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .tools__group {
+    padding: var(--s-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+  .tools__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+  }
+  .tools__chip {
+    font-size: 13px;
+    color: var(--text-2);
+  }
+  .roles {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+    padding-top: var(--s-8);
+  }
+  .roles__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--s-5);
+  }
+  .role {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .role__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-2);
+  }
+  .role__head h3 {
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .role__badge {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--subtle);
+    border: 1px solid var(--line-strong);
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+  .role__badge--primary {
+    color: var(--on-accent);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .role__skills {
+    font-size: 15px;
+    color: var(--text-2);
+  }
+  .role__proof {
+    margin-top: auto;
+    font-size: 12px;
+    color: var(--subtle);
+  }
+</style>

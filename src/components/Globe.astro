@@ -1,0 +1,52 @@
+<div class="globe" data-globe>
+  <canvas aria-label="Rotating network globe centred on Yogyakarta" role="img"></canvas>
+  <div class="globe__label mono" aria-hidden="true">
+    <span>YOGYAKARTA, ID</span>
+    <span>DRAG TO ROTATE</span>
+  </div>
+</div>
+
+<script>
+  import { initGlobe } from '../scripts/globe';
+  document.querySelectorAll<HTMLElement>('[data-globe]').forEach(initGlobe);
+</script>
+
+<style>
+  .globe {
+    position: relative;
+    flex: 1 1 380px;
+    min-width: 0;
+    max-width: 460px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: pan-y;
+  }
+  canvas:active {
+    cursor: grabbing;
+  }
+  .globe__label {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--subtle);
+    letter-spacing: 0.04em;
+    pointer-events: none;
+  }
+  :global(.globe--fallback) {
+    background-image: radial-gradient(circle at center, #1a1f24 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+</style>

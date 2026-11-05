@@ -1,0 +1,42 @@
+---
+const items = [
+  { label: 'Now', value: 'TryHackMe SOC Level 1 · 40%' },
+  { label: 'Completed', value: 'Pre Security, Cyber Security 101' },
+  { label: 'Thesis', value: 'Explainable password classifier' },
+  { label: 'Focus', value: 'Defense first, offense next' },
+];
+---
+
+<section class="strip">
+  <div class="container strip__grid">
+    {
+      items.map((i) => (
+        <div class="strip__item">
+          <span class="label">{i.label}</span>
+          <span class="strip__value">{i.value}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .strip {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .strip__grid {
+    padding-block: var(--s-6);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--s-5);
+  }
+  .strip__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+  .strip__value {
+    font-weight: 500;
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+const log = await getCollection('log');
+---
+
+<section id="log" class="bordered">
+  <div class="container section log">
+    <div class="log__head" data-reveal>
+      <span class="eyebrow">06 / Changelog</span>
+      <h2 class="h2">Learning log</h2>
+      <p class="log__desc">Updated every month. New rooms, new reports, what changed.</p>
+    </div>
+    <ol class="log__list" data-reveal>
+      {
+        log.map(({ data: l }) => (
+          <li class="log__item">
+            <span class="log__date mono">{l.date}</span>
+            <span class="log__text">{l.text}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .log {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-7);
+  }
+  .log__head {
+    flex: 1 1 280px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+  .log__desc {
+    color: var(--subtle);
+    font-size: 15px;
+    max-width: 32ch;
+  }
+  .log__list {
+    flex: 999 1 560px;
+    min-width: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+  .log__item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2) var(--s-6);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .log__date {
+    flex: 0 0 96px;
+    font-size: 13px;
+    color: var(--subtle);
+  }
+  .log__text {
+    flex: 1 1 320px;
+    min-width: 0;
+  }
+</style>

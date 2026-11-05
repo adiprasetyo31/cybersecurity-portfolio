@@ -1,0 +1,6 @@
+[
+  { "id": "siem", "group": "SIEM and logs", "items": ["Splunk", "Elastic / Kibana", "KQL", "SOAR concepts", "Windows Event IDs", "IDS / IPS"] },
+  { "id": "analysis", "group": "Analysis", "items": ["CyberChef", "CAPA", "REMnux", "FLARE-VM", "YARA", "ExifTool"] },
+  { "id": "env", "group": "Environment and code", "items": ["Kali Linux", "VirtualBox", "OpenVPN", "Python", "scikit-learn", "FastAPI", "React", "TypeScript"] },
+  { "id": "frameworks", "group": "Frameworks", "items": ["MITRE ATT&CK", "D3FEND", "CAR", "Cyber Kill Chain", "Unified Kill Chain", "Pyramid of Pain", "NIST and SANS IR", "OWASP Top 10 2025"] }
+]

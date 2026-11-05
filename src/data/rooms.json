@@ -1,0 +1,9 @@
+[
+  { "id": "soc-ir", "topic": "SOC and IR basics", "rooms": "SOC Fundamentals, Incident Response Fundamentals, Digital Forensics Fundamentals, Logs Fundamentals" },
+  { "id": "siem", "topic": "SIEM and detection", "rooms": "Introduction to SIEM, Splunk: The Basics, Elastic Stack: The Basics, Introduction to SOAR, IDS Fundamentals, Firewall Fundamentals" },
+  { "id": "frameworks", "topic": "Threat frameworks", "rooms": "Pyramid of Pain, Cyber Kill Chain, Unified Kill Chain, MITRE" },
+  { "id": "phishing", "topic": "Phishing", "rooms": "Phishing Analysis Fundamentals, Phishing Prevention (in progress)" },
+  { "id": "malware", "topic": "Malware analysis", "rooms": "CAPA: The Basics, REMnux: Getting Started, FlareVM: Arsenal of Tools, CyberChef: The Basics" },
+  { "id": "web", "topic": "Web and principles", "rooms": "OWASP Top 10 2025 (3 rooms), Security Principles, Vulnerability Scanner Overview" },
+  { "id": "osint", "topic": "Threat intel and OSINT", "rooms": "Just a VPN Login, OSINT Challenge (Digital Footprint)" }
+]

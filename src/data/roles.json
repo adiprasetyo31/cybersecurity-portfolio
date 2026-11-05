@@ -1,0 +1,6 @@
+[
+  { "id": "soc", "name": "SOC Analyst", "badge": "Strongest", "primary": true, "skills": "Log analysis, alert triage, SIEM search, mapping alerts to ATT&CK", "proof": "Splunk, Elastic, SOC Fundamentals, Intro to SIEM" },
+  { "id": "ir", "name": "Incident Responder", "skills": "Phishing analysis, IR lifecycle, forensics basics, written reporting", "proof": "Phishing rooms, IR and DFIR Fundamentals" },
+  { "id": "eng", "name": "Security Engineering", "skills": "Python, ML for security data, building and explaining web tools", "proof": "Password classifier thesis, OWASP Top 10" },
+  { "id": "pt", "name": "Penetration Tester", "badge": "Next", "skills": "Linux fundamentals and enumeration, growing into exploitation", "proof": "Kali setup, Linux basics, after SOC Level 1" }
+]

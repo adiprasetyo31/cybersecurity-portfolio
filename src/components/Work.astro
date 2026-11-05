@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHead from './SectionHead.astro';
+import CaseStudy from './CaseStudy.astro';
+
+const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const featured = all.filter((e) => e.data.status === 'featured');
+const upnext = all.filter((e) => e.data.status === 'upnext');
+---
+
+<section id="work" class="container work">
+  <SectionHead
+    eyebrow="02 / Selected work"
+    title="Case studies"
+    desc="Written as problem, action, outcome, and tagged with the role each one supports. Lab answers and flags are left out."
+  />
+
+  <div class="work__list">
+    {featured.map((entry, i) => <CaseStudy entry={entry} index={i + 1} />)}
+  </div>
+
+  {
+    upnext.length > 0 && (
+      <div class="upnext">
+        <span class="label">Up next</span>
+        {upnext.map((e) => (
+          <article class="upnext__card" data-reveal>
+            <div class="upnext__body">
+              <div class="upnext__tags">
+                {e.data.tags.map((t) => <span class="tag">{t}</span>)}
+                <span class="upnext__meta mono">{e.data.meta}</span>
+              </div>
+              <h3 class="upnext__title">{e.data.title}</h3>
+              <p class="upnext__summary">{e.data.summary}</p>
+            </div>
+            {e.data.phase && <span class="upnext__phase mono">{e.data.phase}</span>}
+          </article>
+        ))}
+      </div>
+    )
+  }
+</section>
+
+<style>
+  .work {
+    padding-bottom: var(--s-10);
+  }
+  .work__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-7);
+  }
+  .upnext {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    padding-top: var(--s-7);
+  }
+  .upnext__card {
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-lg);
+    padding: var(--s-6);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-5) var(--s-7);
+    align-items: center;
+  }
+  .upnext__body {
+    flex: 999 1 480px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+  .upnext__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3);
+  }
+  .upnext__meta,
+  .upnext__phase {
+    font-size: 12px;
+    color: var(--subtle);
+  }
+  .upnext__phase {
+    font-size: 13px;
+  }
+  .upnext__title {
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+  }
+  .upnext__summary {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 64ch;
+  }
+</style>

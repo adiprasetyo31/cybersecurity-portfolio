@@ -1,0 +1,6 @@
+[
+  { "id": "threat-intel", "file": "Threat_Intel_VPN_Login_Report_AdiPrasetyo.pdf", "role": "SOC Analyst", "date": "Oct 2026", "href": "/reports/Threat_Intel_VPN_Login_Report_AdiPrasetyo.pdf" },
+  { "id": "phishing", "file": "Phishing_Analysis_Report_AdiPrasetyo.pdf", "role": "Incident Responder", "date": "Oct 2026", "href": "/reports/Phishing_Analysis_Report_AdiPrasetyo.pdf" },
+  { "id": "kibana", "file": "VPN_Log_Investigation_Kibana_Report_AdiPrasetyo.pdf", "role": "SOC Analyst", "date": "Oct 2026", "href": "/reports/VPN_Log_Investigation_Kibana_Report_AdiPrasetyo.pdf" },
+  { "id": "osint", "file": "OSINT_Image_Geolocation_Report_AdiPrasetyo.pdf", "role": "Threat Intel", "date": "Oct 2026", "href": "/reports/OSINT_Image_Geolocation_Report_AdiPrasetyo.pdf" }
+]
